@@ -12,7 +12,7 @@ from keras.models import load_model
 from keras.callbacks import *
 import cv2
 
-dataset_path = "G:\\PycharmProjects\\HandRecognitionApplication\\dataset\\"
+dataset_path = "/dataset/"
 
 classes_dict = {0:"background", 1:"L", 2:"thumbsup", 3:"up"}
 classes_inv_dict = {"background":0, "L":1, "thumbsup":2, "up":3}
@@ -41,10 +41,10 @@ def create_data(data_path):
 
 
 # Train Dataset
-X_train, y_train = create_data("G:\\PycharmProjects\\HandRecognitionApplication\\dataset\\training_set")
+X_train, y_train = create_data("dataset/training_set")
 
 # Test Dataset
-X_test, y_test = create_data("G:\\PycharmProjects\\HandRecognitionApplication\\dataset\\test_set")
+X_test, y_test = create_data("dataset/test_set")
 
 
 # TODO: Dump and load numpy
@@ -78,7 +78,7 @@ classifier.add(Dropout(0.30))
 classifier.add(Flatten())
 
 # Dense layer
-# Step 4 - Full connection. Units for softmax are 6 because there are 6 classes
+# Step 4 - Full connection. Units for softmax are 4 because there are 4 classes
 classifier.add(Dense(units = 128, activation = 'relu'))
 classifier.add(Dense(units = 128, activation = 'relu'))
 classifier.add(Dense(units = 128, activation = 'relu'))
